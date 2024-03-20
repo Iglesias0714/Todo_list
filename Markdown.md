@@ -1,17 +1,17 @@
 # Explicación del código 
 =========================================
- # Evita que el formulario se envíe y recargue la página
+- Evita que el formulario se envíe y recargue la página
  ```json
 function handleSubmit(e) {
     e.preventDefault();
 ```
 
-# Obtiene el valor del input con el id 'todoAdd'
+- Obtiene el valor del input con el id 'todoAdd'
  ```json
     let todo = document.getElementById('todoAdd').value;
 ```
 
- # Crea un nuevo objeto 'newTodo' con un id único, el texto del input y la tarea sin completar
+- Crea un nuevo objeto 'newTodo' con un id único, el texto del input y la tarea sin completar
  ```json
     const newTodo = {
         id: new Date().getTime(), Se utiliza el tiempo actual como id único
@@ -20,7 +20,7 @@ function handleSubmit(e) {
     };
  ```
 "
- # Verifica si el texto de la nueva tarea no está vacío
+ - Verifica si el texto de la nueva tarea no está vacío
  ```json
     if (newTodo.text.length > 0 ) {
       Agrega la nueva tarea al arreglo de tareas utilizando el spread operator y concat
@@ -30,7 +30,7 @@ function handleSubmit(e) {
         alert("Enter Valid Task");
     }
  ```
-#Limpia el valor del input 'todoAdd'
+- Limpia el valor del input 'todoAdd'
  ```json
     document.getElementById('todoAdd').value = "";
 }
@@ -42,7 +42,7 @@ function handleSubmit(e) {
         <form onSubmit={handleSubmit}>
  ```
 
- # Crea un formulario que llama a la función 'handleSubmit' al enviarse 
+- Crea un formulario que llama a la función 'handleSubmit' al enviarse 
  ```json
             <input
               type="text"
