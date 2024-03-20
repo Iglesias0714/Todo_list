@@ -1,5 +1,5 @@
 # Explicación del código 
-=========================================
+===========================================================================================================================
 - Evita que el formulario se envíe y recargue la página
  ```
 function handleSubmit(e) {
@@ -35,7 +35,7 @@ function handleSubmit(e) {
     document.getElementById('todoAdd').value = "";
 }
  ```
-=========================================
+===========================================================================================================================
  ```
 <div id="todo-list">
     <h1>Todo List</h1>
@@ -47,8 +47,8 @@ function handleSubmit(e) {
             <input
               type="text"
               id='todoAdd' <!-- Asigna el id 'todoAdd' al input -->
+                 />
  ```
-            />
  ```
             <button type="submit">Add Todo</button> <!-- Botón para agregar una tarea -->
         </form>
@@ -60,4 +60,19 @@ function handleSubmit(e) {
             </div>)}
 </div>
  ```
-
+===========================================================================================================================
+ #Filtra las tareas que no coincidan con el id proporcionado
+```
+function deleteTodo(id) {
+    let updatedTodos = [...todos].filter((todo) => todo.id !== id);
+```
+ #Actualiza el estado 'todos' con las tareas filtradas
+ ```
+    setTodos(updatedTodos);
+}
+```
+===========================================================================================================================
+Este botón está asociado a la función deleteTodo, que se ejecutará cuando se haga clic en él. Al hacer clic en el botón, se llama a la función deleteTodo con el id de la tarea (todo.id) como argumento. Esto provocará que la tarea correspondiente se elimine de la lista de tareas cuando se presione el botón "Delete".
+```
+<button onClick={() => deleteTodo(todo.id)}>Delete</button>
+```
