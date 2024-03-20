@@ -1,27 +1,27 @@
 # Explicación del código 
-
+=========================================
  # Evita que el formulario se envíe y recargue la página
-```
+ ```json
 function handleSubmit(e) {
     e.preventDefault();
 ```
 
-  # Obtiene el valor del input con el id 'todoAdd'
-```
+# Obtiene el valor del input con el id 'todoAdd'
+ ```json
     let todo = document.getElementById('todoAdd').value;
 ```
 
  # Crea un nuevo objeto 'newTodo' con un id único, el texto del input y la tarea sin completar
-```
+ ```json
     const newTodo = {
         id: new Date().getTime(), Se utiliza el tiempo actual como id único
         text: todo.trim(), #Elimina los espacios en blanco al principio y al final del texto
         completed: false, Indica que la tarea está sin completar
     };
-```
-"
-    # Verifica si el texto de la nueva tarea no está vacío
  ```
+"
+ # Verifica si el texto de la nueva tarea no está vacío
+ ```json
     if (newTodo.text.length > 0 ) {
       Agrega la nueva tarea al arreglo de tareas utilizando el spread operator y concat
         setTodos([...todos].concat(newTodo));
@@ -30,8 +30,33 @@ function handleSubmit(e) {
         alert("Enter Valid Task");
     }
  ```
-   #Limpia el valor del input 'todoAdd'
- ```
+#Limpia el valor del input 'todoAdd'
+ ```json
     document.getElementById('todoAdd').value = "";
 }
  ```
+=========================================
+ ```json
+<div id="todo-list">
+    <h1>Todo List</h1>
+        <form onSubmit={handleSubmit}>
+ ```
+
+ # Crea un formulario que llama a la función 'handleSubmit' al enviarse 
+ ```json
+            <input
+              type="text"
+              id='todoAdd' <!-- Asigna el id 'todoAdd' al input -->
+            />
+ ```json
+            <button type="submit">Add Todo</button> <!-- Botón para agregar una tarea -->
+        </form>
+        <!-- Mapea sobre la lista de tareas 'todos' y muestra cada una -->
+        {todos.map((todo) =>
+            <div className="todo" key={todo.id}>
+                <div className="todo-text">{todo.text}</div> <!-- Muestra el texto de la tarea -->
+            <!-- insert delete button below this line -->
+            </div>)}
+</div>
+ ```
+
