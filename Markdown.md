@@ -61,6 +61,12 @@ function handleSubmit(e) {
 </div>
  ```
 ============================================================================================
+```
+function deleteTodo(id) {
+    let updatedTodos = [...todos].filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  }
+  ```
  - Filtra las tareas que no coincidan con el id proporcionado
 ```
 function deleteTodo(id) {
@@ -72,7 +78,66 @@ function deleteTodo(id) {
 }
 ```
 ============================================================================================
-- Este botón está asociado a la función deleteTodo, que se ejecutará cuando se haga clic en él. Al hacer clic en el botón, se llama a la función deleteTodo con el id de la tarea (todo.id) como argumento. Esto provocará que la tarea correspondiente se elimine de la lista de tareas cuando se presione el botón "Delete".
+- Este botón está asociado a la función deleteTodo, que se ejecutará cuando se haga clic en él.
+  Al hacer clic en el botón, se llama a la función deleteTodo con el id de la tarea (todo.id)
+  como argumento.Esto provocará que la tarea correspondiente se elimine de
+  la lista de tareas cuando se presione el botón "Delete".
 ```
 <button onClick={() => deleteTodo(todo.id)}>Delete</button>
 ```
+============================================================================================
+   ```
+function toggleComplete(id) {
+    let updatedTodos = [...todos].map((todo) => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  }
+   ```
+ - Crea una copia del arreglo 'todos' utilizando el spread operator
+   ```
+   function toggleComplete(id) {
+    let updatedTodos = [...todos].map((todo) => {
+   ```
+ - Comprueba si el id de la tarea coincide con el id proporcionado
+     ```
+        if (todo.id === id) {
+     ```
+- Cambia el estado de completado de la tarea a su opuesto
+  ```
+            todo.completed = !todo.completed;
+        }
+        return todo; // Devuelve la tarea actualizada
+    });
+    ```
+ - Actualiza el estado 'todos' con las tareas modificadas
+   ```
+    setTodos(updatedTodos);
+     }
+    ```
+   ============================================================================================
+  - Este es un elemento de entrada de tipo checkbox. Cuando se selecciona, cambia el estado de
+    completado de una tarea específica en la lista de tareas. La propiedad checked determina
+    si el checkbox está marcado o desmarcado según el estado de completado de la tarea todo.
+    Cuando se produce un cambio en el checkbox (seleccionar o deseleccionar), se ejecuta la
+    función toggleComplete(todo.id), que cambia el estado de completado de la tarea correspondiente
+    en la lista de tareas.
+  ```
+ <input type="checkbox" id="completed" checked={todo.completed} onChange={() => toggleComplete(todo.id)}/>
+  ```
+   ============================================================================================
+  -Esto es un estado de React que se inicializa con un valor nulo. Se utiliza para realizar un 
+  seguimiento de la tarea que se está editando en la lista de tareas. La variable todoEditing 
+  almacena el ID de la tarea que se está editando actualmente, mientras que setTodoEditing es 
+  una función que se utiliza para actualizar ese valor. Cuando una tarea se selecciona para 
+  edición, su ID se asigna a todoEditing, y cuando se completa la edición o se cancela, todoEditing
+  vuelve a ser null. Esto permite que la interfaz de usuario responda dinámicamente al estado de 
+  edición de las tareas.
+    ``` 
+    const [todoEditing, setTodoEditing] = useState(null);
+    ```
+     ============================================================================================
+     
