@@ -19,7 +19,7 @@ function handleSubmit(e) {
         completed: false, Indica que la tarea está sin completar
     };
  ```
-"
+
  - Verifica si el texto de la nueva tarea no está vacío
  ```json
     if (newTodo.text.length > 0 ) {
